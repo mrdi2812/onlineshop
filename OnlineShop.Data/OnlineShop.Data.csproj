@@ -56,6 +56,10 @@
       <Project>{995d97cd-3870-421d-932a-d8c1bf7ec3fe}</Project>
       <Name>OnlineShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Model\OnlineShop.Model.csproj">
+      <Project>{0e3f76ce-3cdb-4e77-87a3-a8d41677e616}</Project>
+      <Name>OnlineShop.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
