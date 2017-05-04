@@ -68,7 +68,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryTest\ErrorRepositoryTest.cs" />
     <Compile Include="RepositoryTest\PostCategoryRepositoryTest.cs" />
+    <Compile Include="ServiceTest\ErrorServiceTest.cs" />
     <Compile Include="ServiceTest\PostCategoryServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,10 +89,6 @@
     <ProjectReference Include="..\OnlineShop.Service\OnlineShop.Service.csproj">
       <Project>{fa64e206-badb-4061-9abf-c7b6a293a448}</Project>
       <Name>OnlineShop.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OnlineShop.Web\OnlineShop.Web.csproj">
-      <Project>{a5d4f8f2-8fb5-4232-b22d-5b5f6a942f64}</Project>
-      <Name>OnlineShop.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

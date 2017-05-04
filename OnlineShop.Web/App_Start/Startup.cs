@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Owin;
 using Owin;
 using Autofac;
 using System.Reflection;
@@ -10,7 +12,6 @@ using System.Web.Http;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using OnlineShop.Data;
-
 [assembly: OwinStartup(typeof(OnlineShop.Web.App_Start.Startup))]
 
 namespace OnlineShop.Web.App_Start

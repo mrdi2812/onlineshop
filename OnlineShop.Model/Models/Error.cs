@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineShop.Model.Models
 {
@@ -13,9 +9,9 @@ namespace OnlineShop.Model.Models
     {
         [Key]
         public int ID { set; get; }
+
         public string Messeage { set; get; }
         public string StackTrace { set; get; }
         public DateTime CreateDate { set; get; }
-
     }
 }
