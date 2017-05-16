@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using OnlineShop.Data.Infrastructure;
+﻿using OnlineShop.Data.Infrastructure;
 using OnlineShop.Data.Repositories;
+using System.Collections.Generic;
 using OnlineShop.Model.Models;
-
 namespace OnlineShop.Service
 {
     public interface IPostCategoryService
@@ -34,14 +32,14 @@ namespace OnlineShop.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public PostCategory  Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-          return _postCategoryRepository.Add(postCategory);
+            return _postCategoryRepository.Add(postCategory);
         }
 
         public PostCategory Delete(int id)
         {
-          return _postCategoryRepository.Delete(id);
+            return _postCategoryRepository.Delete(id);
         }
 
         public IEnumerable<PostCategory> GetAll()
