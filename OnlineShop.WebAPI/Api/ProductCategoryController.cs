@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace OnlineShop.WebAPI.Api
 {
@@ -18,13 +19,16 @@ namespace OnlineShop.WebAPI.Api
     {
         private IProductCategoryService _productCategoryService;
         #region[Initialize]
+
         public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService)
             : base(errorService)
         {
             this._productCategoryService = productCategoryService;
         }
+
         #endregion
         #region[GetAllParents]
+
         [Route("getallparents")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
@@ -39,9 +43,10 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+
         [Route("getbyid/{id:int}")]
         [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request,int id)
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -53,11 +58,13 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+
         #endregion
         #region[GetAll]
+
         [Route("getall")]
         [HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request,string keyword, int page, int pageSize = 20)
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -80,8 +87,10 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+
         #endregion
         #region[Create]
+
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
@@ -109,8 +118,10 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+
         #endregion
         #region[Update]
+
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
@@ -138,12 +149,14 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+
         #endregion
         #region[Delete]
+
         [Route("delete")]
         [HttpDelete]
         [AllowAnonymous]
-        public HttpResponseMessage Delete(HttpRequestMessage request,int id)
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -163,6 +176,36 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProductCategories)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProductCategories);
+                    foreach (var item in listProductCategory)
+                    {
+                        _productCategoryService.Delete(item);
+                    }
+
+                    _productCategoryService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
+                }
+
+                return response;
+            });
+        }
+
         #endregion
     }
 }
