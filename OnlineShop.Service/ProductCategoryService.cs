@@ -1,21 +1,22 @@
-﻿using OnlineShop.Model.Models;
-using System.Collections.Generic;
-using System;
+﻿using OnlineShop.Data.Infrastructure;
 using OnlineShop.Data.Repositories;
-using OnlineShop.Data.Infrastructure;
+using OnlineShop.Model.Models;
+using System.Collections.Generic;
 
 namespace OnlineShop.Service
 {
     public interface IProductCategoryService
     {
-        ProductCategory Add(ProductCategory postCategory);
+        ProductCategory Add(ProductCategory productCategory);
 
-        void Update(ProductCategory postCategory);
+        void Update(ProductCategory productCategory);
 
         ProductCategory Delete(int id);
 
         IEnumerable<ProductCategory> GetAll();
+
         IEnumerable<ProductCategory> GetAll(string keyword);
+
         IEnumerable<ProductCategory> GetAllByParentId(int parentId);
 
         ProductCategory GetById(int id);
@@ -33,6 +34,7 @@ namespace OnlineShop.Service
             this._productCategoryRepository = productCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
+
         public ProductCategory Add(ProductCategory productCategory)
         {
             return _productCategoryRepository.Add(productCategory);
