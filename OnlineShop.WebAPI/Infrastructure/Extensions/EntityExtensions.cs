@@ -79,6 +79,7 @@ namespace OnlineShop.WebAPI.Infrastructure.Extensions
             product.Warranty = productVm.Warranty;
             product.Description = productVm.Description;
             product.Content = productVm.Content;
+            product.Tags = productVm.Tags;
             product.HotFlag = productVm.HotFlag;
             product.HomeFlag = productVm.HomeFlag;
             product.ViewCount = productVm.ViewCount;

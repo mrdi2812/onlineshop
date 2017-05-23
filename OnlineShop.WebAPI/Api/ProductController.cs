@@ -17,8 +17,8 @@ namespace OnlineShop.WebAPI.Api
     [RoutePrefix("api/product")]
     public class ProductController : ApiControllerBase
     {
+        #region Initialize
         private IProductService _productService;
-        #region[Initialize]
 
         public ProductController(IErrorService errorService, IProductService productService)
             : base(errorService)
@@ -27,7 +27,6 @@ namespace OnlineShop.WebAPI.Api
         }
 
         #endregion
-        #region[GetAllParents]
 
         [Route("getallparents")]
         [HttpGet]
@@ -43,7 +42,6 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
-
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
@@ -55,12 +53,10 @@ namespace OnlineShop.WebAPI.Api
                 var responseData = Mapper.Map<Product, ProductViewModel>(model);
 
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+
                 return response;
             });
         }
-
-        #endregion
-        #region[GetAll]
 
         [Route("getall")]
         [HttpGet]
@@ -88,13 +84,11 @@ namespace OnlineShop.WebAPI.Api
             });
         }
 
-        #endregion
-        #region[Create]
 
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -106,7 +100,7 @@ namespace OnlineShop.WebAPI.Api
                 else
                 {
                     var newProduct = new Product();
-                    newProduct.UpdateProduct(productVm);
+                    newProduct.UpdateProduct(productCategoryVm);
                     newProduct.CreatedDate = DateTime.Now;
                     _productService.Add(newProduct);
                     _productService.Save();
@@ -118,9 +112,6 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
-
-        #endregion
-        #region[Update]
 
         [Route("update")]
         [HttpPut]
@@ -137,8 +128,10 @@ namespace OnlineShop.WebAPI.Api
                 else
                 {
                     var dbProduct = _productService.GetById(productVm.ID);
+
                     dbProduct.UpdateProduct(productVm);
                     dbProduct.UpdatedDate = DateTime.Now;
+
                     _productService.Update(dbProduct);
                     _productService.Save();
 
@@ -149,9 +142,6 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
-
-        #endregion
-        #region[Delete]
 
         [Route("delete")]
         [HttpDelete]
@@ -167,16 +157,16 @@ namespace OnlineShop.WebAPI.Api
                 }
                 else
                 {
-                    var oldProduct = _productService.Delete(id);
+                    var oldProductCategory = _productService.Delete(id);
                     _productService.Save();
-                    var responseData = Mapper.Map<Product, ProductViewModel>(oldProduct);
+
+                    var responseData = Mapper.Map<Product, ProductViewModel>(oldProductCategory);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
                 return response;
             });
         }
-
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
@@ -191,21 +181,19 @@ namespace OnlineShop.WebAPI.Api
                 }
                 else
                 {
-                    var listProduct = new JavaScriptSerializer().Deserialize<List<int>>(checkedProducts);
-                    foreach (var item in listProduct)
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProducts);
+                    foreach (var item in listProductCategory)
                     {
                         _productService.Delete(item);
                     }
 
                     _productService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK, listProduct.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
                 }
 
                 return response;
             });
         }
-
-        #endregion
     }
 }
