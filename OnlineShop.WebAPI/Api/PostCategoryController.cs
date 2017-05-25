@@ -14,6 +14,7 @@ using System.Web.Http;
 namespace OnlineShop.WebAPI.Api
 {
     [RoutePrefix("api/postcategory")]
+    [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;

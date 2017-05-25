@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace OnlineShop.WebAPI.Api
 {
     [RoutePrefix("api/productcategory")]
+    [Authorize]
     public class ProductCategoryController : ApiControllerBase
     {
         private IProductCategoryService _productCategoryService;
@@ -108,6 +109,7 @@ namespace OnlineShop.WebAPI.Api
                     var newProductCategory = new ProductCategory();
                     newProductCategory.UpdateProductCategory(productCategoryVm);
                     newProductCategory.CreatedDate = DateTime.Now;
+                    newProductCategory.CreatedBy = User.Identity.Name;
                     _productCategoryService.Add(newProductCategory);
                     _productCategoryService.Save();
 
@@ -139,6 +141,7 @@ namespace OnlineShop.WebAPI.Api
                     var dbProductCategory = _productCategoryService.GetById(productCategoryVm.ID);
                     dbProductCategory.UpdateProductCategory(productCategoryVm);
                     dbProductCategory.UpdatedDate = DateTime.Now;
+                    dbProductCategory.UpdatedBy = User.Identity.Name;
                     _productCategoryService.Update(dbProductCategory);
                     _productCategoryService.Save();
 

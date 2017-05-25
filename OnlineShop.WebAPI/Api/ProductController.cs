@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace OnlineShop.WebAPI.Api
 {
     [RoutePrefix("api/product")]
+    [Authorize]
     public class ProductController : ApiControllerBase
     {
         #region Initialize
@@ -27,7 +28,7 @@ namespace OnlineShop.WebAPI.Api
         }
 
         #endregion
-
+        #region[GetAllParents]
         [Route("getallparents")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
@@ -42,6 +43,8 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+        #endregion
+        #region[GetById]
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
@@ -57,7 +60,8 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
-
+        #endregion
+        #region[GetAll]
         [Route("getall")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
@@ -83,8 +87,8 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
-
-
+        #endregion
+        #region[Create]
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
@@ -102,6 +106,7 @@ namespace OnlineShop.WebAPI.Api
                     var newProduct = new Product();
                     newProduct.UpdateProduct(productCategoryVm);
                     newProduct.CreatedDate = DateTime.Now;
+                    newProduct.CreatedBy = User.Identity.Name;
                     _productService.Add(newProduct);
                     _productService.Save();
 
@@ -112,7 +117,8 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
-
+        #endregion
+        #region[Update]
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
@@ -131,7 +137,7 @@ namespace OnlineShop.WebAPI.Api
 
                     dbProduct.UpdateProduct(productVm);
                     dbProduct.UpdatedDate = DateTime.Now;
-
+                    dbProduct.UpdatedBy = User.Identity.Name;
                     _productService.Update(dbProduct);
                     _productService.Save();
 
@@ -142,7 +148,8 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
-
+        #endregion
+        #region[Delete]
         [Route("delete")]
         [HttpDelete]
         [AllowAnonymous]
@@ -195,5 +202,6 @@ namespace OnlineShop.WebAPI.Api
                 return response;
             });
         }
+        #endregion
     }
 }
