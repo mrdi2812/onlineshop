@@ -59,6 +59,8 @@ namespace OnlineShop.Web.App_Start
         {
             public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
             {
+                // We are dealing with a browser based javascipt app so no clientId and client secret are transmitted.
+                // There is nothing to validate
                 context.Validated();
             }
             public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)

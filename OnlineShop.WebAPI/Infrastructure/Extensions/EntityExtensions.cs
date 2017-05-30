@@ -92,5 +92,6 @@ namespace OnlineShop.WebAPI.Infrastructure.Extensions
             product.MetaDescription = productVm.MetaDescription;
             product.Status = productVm.Status;
         }
+       
     }
 }
