@@ -10,11 +10,11 @@
 </script>
 }
 <div class="shoes-grid">
-    <a href="single.html">
-        <div class="wrap-in">
-            <div class="wmuSlider example1 slide-grid">
-                <div class="wmuSliderWrapper">
-                    @foreach (var slide in Model.Slides)
+
+<div class="wrap-in">
+  <div class="wmuSlider example1 slide-grid">
+        <div class="wmuSliderWrapper">
+             @foreach (var slide in Model.Slides)
                     {
                         <article style="position: absolute; width: 100%; opacity: 0;">
                             <div class="banner-matter">
@@ -27,51 +27,18 @@
                                 <div class="clearfix"> </div>
                             </div>
                         </article>
-                    }
-                    
-                </div>
-    </a>
-    <ul class="wmuSliderPagination">
-        @for (int i = 0; i <Model.Slides.Count(); i++)
-        {
-            <li><a href="#" class="">i</a></li>
-        } 
-    </ul>
-   
+                    }                  
+         </div>
+        <ul class="wmuSliderPagination">
+            @for (int i = 0; i <Model.Slides.Count(); i++)
+              {
+                 <li><a href="#" class="">i</a></li>
+              } 
+        </ul>
+   </div>
 </div>
 
-@section homeProduct{
-@*<div class="shoes-grid-left">
-    <a href="single.html">
-        <div class="col-md-6 con-sed-grid">
 
-            <div class=" elit-grid">
-
-                <h4>consectetur  elit</h4>
-                <label>FOR ALL PURCHASE VALUE</label>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-                <span class="on-get">GET NOW</span>
-            </div>
-            <img class="img-responsive shoe-left" src="~/Assets/client/images/sh.jpg" alt=" " />
-
-            <div class="clearfix"> </div>
-
-        </div>
-    </a>
-    <a href="single.html">
-        <div class="col-md-6 con-sed-grid sed-left-top">
-            <div class=" elit-grid">
-                <h4>consectetur  elit</h4>
-                <label>FOR ALL PURCHASE VALUE</label>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>
-                <span class="on-get">GET NOW</span>
-            </div>
-            <img class="img-responsive shoe-left" src="~/Assets/client/images/wa.jpg" alt=" " />
-
-            <div class="clearfix"> </div>
-        </div>
-    </a>
-</div>*@
 <div class="products">
     <h5 class="latest-product">SẢN PHẨM MỚI NHẤT</h5>
     <a class="view-all" href="san-pham.html">XEM TẤT CẢ<span> </span></a>
@@ -80,7 +47,7 @@
     @foreach (var lastestProduct in Model.LastestProducts)
     {
         var url = "/" + lastestProduct.Alias + ".p-" + lastestProduct.ID + ".html";
-        <div class="col-md-4 chain-grid grid-top-chain">
+        <div class="col-md-3 chain-grid grid-top-chain">
             <a href="@url"><img class="img-responsive chain" src="@lastestProduct.Image" alt="@lastestProduct.Name" /></a>
             <span class="star"> </span>
             <div class="grid-chain-bottom">
@@ -89,9 +56,10 @@
                     <div class="dolor-grid">
                         @if (lastestProduct.PromotionPrice.HasValue)
                         {
-                            <span class="actual">@lastestProduct.PromotionPrice.Value.ToString("NO") VNĐ</span>
+                            <span class="actual">@lastestProduct.PromotionPrice.Value.ToString("N0")</span>
                         }
-                        <span class="reducedfrom">@lastestProduct.Price.ToString("NO") VNĐ</span>
+                        <br />
+                        <span class="reducedfrom">@lastestProduct.Price.ToString("N0")</span>
                         <span class="rating">
                             <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
                             <label for="rating-input-1-5" class="rating-star1"> </label>
@@ -105,24 +73,25 @@
                             <label for="rating-input-1-1" class="rating-star"> </label>
                         </span>
                     </div>
-                    <a class="now-get get-cart" href="#">THÊM VÀO GIỎ HÀNG</a>
+                    <a class="now-get get-cart" href="#">MUA SẢN PHẨM</a>
                     <div class="clearfix"> </div>
                 </div>
             </div>
         </div>
-    }  
+      
+    }
     <div class="clearfix"> </div>
 </div>
 <div class="products">
     <h5 class="latest-product">SẢN PHẨM BÁN CHẠY</h5>
     <a class="view-all" href="san-pham-ban-chay.html">XEM TẤT CẢ<span> </span></a>
 </div>
-<div class="product-left">
+<div class="col-mdproduct-left">
     @foreach (var topSaleProduct in Model.TopSaleProducts)
     {
         var url = "/" + topSaleProduct.Alias + ".p-" + topSaleProduct.ID + ".html";
         <div class="col-md-4 chain-grid grid-top-chain">
-            <a href="@url"><img class="img-responsive chain" src="@topSaleProduct.Image" alt="@topSaleProduct.Name" /></a>
+            <a href="@url"><img class="img-responsive chain" src="@topSaleProduct.Image" alt="@topSaleProduct.Name" width="150" /></a>
             <span class="star"> </span>
             <div class="grid-chain-bottom">
                 <h6><a href="single.html">@topSaleProduct.Name</a></h6>
@@ -130,9 +99,10 @@
                     <div class="dolor-grid">
                         @if (topSaleProduct.PromotionPrice.HasValue)
                         {
-                            <span class="actual">@topSaleProduct.PromotionPrice.Value.ToString("NO") VNĐ</span>
+                            <span class="actual">@topSaleProduct.PromotionPrice.Value.ToString("N0")</span>
                         }
-                        <span class="reducedfrom">@topSaleProduct.Price.ToString("NO") VNĐ</span>
+                        <br />
+                        <span class="reducedfrom">@topSaleProduct.Price.ToString("N0")</span>
                         <span class="rating">
                             <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
                             <label for="rating-input-1-5" class="rating-star1"> </label>
@@ -146,7 +116,7 @@
                             <label for="rating-input-1-1" class="rating-star"> </label>
                         </span>
                     </div>
-                    <a class="now-get get-cart" href="#">THÊM VÀO GIỎ HÀNG</a>
+                    <a class="now-get get-cart" href="#">MUA SẢN PHẨM</a>
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -155,7 +125,6 @@
     <div class="clearfix"> </div>
 </div>
 
-
-}
+</div>
 
 

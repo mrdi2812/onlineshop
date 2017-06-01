@@ -6,14 +6,16 @@
     <link href="~/Assets/client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!--theme-style-->
     <link href="~/Assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Assets/client/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Assets/admin/libs/jqueri-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!--//fonts-->
-    <script src="~/Assets/client/js/jquery.min.js"></script>
-    <!--script-->
+  
+
 </head>
 <body>
     <!--header-->
@@ -21,16 +23,15 @@
     <!---->
     <div class="container">
         @RenderBody()
+        @{ Html.RenderAction("Category", "Home");}
     </div>
-   @RenderSection("homeProduct",required:false)
-    <!---->
-    <div class="clearfix"> </div>
-    </div>
-    @{ Html.RenderAction("Category","Home");}
-    <div class="clearfix"> </div>
-    </div>
-    <!---->
     @{Html.RenderAction("Footer", "Home");}
+    <div class="clearfix"> </div> 
+    <script src="~/Assets/client/js/jquery.min.js"></script>
+    <script src="~/Assets/admin/libs/jqueri-ui/jquery-ui.js"></script>
+
+    <script src="~/Assets/client/js/common.js"></script>
+    <!--script-->
     @RenderSection("footerJS",required:false)
 </body>
 </html>

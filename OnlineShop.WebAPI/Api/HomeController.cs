@@ -10,7 +10,6 @@ using System.Web.Http;
 namespace OnlineShop.WebAPI.Api
 {
     [RoutePrefix("api/home")]
-    [Authorize]
     public class HomeController : ApiControllerBase
     {
         IErrorService _errorService;

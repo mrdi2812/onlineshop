@@ -43,7 +43,7 @@
             finder.selectActionFunction = function (fileUrl) {
                 $scope.$apply(function () {
                     $scope.product.Image = fileUrl;
-                })              
+                })
             }
             finder.popup();
         }
@@ -57,6 +57,9 @@
                 })           
             }
             finder.popup();
+        }
+        $scope.DeleteItemMoreImage = function (index) {
+            $scope.moreImages.splice(index, 1);
         }
         loadProductCategory();
     }
