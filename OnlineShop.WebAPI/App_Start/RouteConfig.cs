@@ -42,7 +42,7 @@ namespace OnlineShop.WebAPI
 
             routes.MapRoute(
               name: "Product",
-              url: "{alias}.p-{id}.html",
+              url: "{alias}.p-{productId}.html",
               defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
               namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
           );

@@ -34,6 +34,8 @@ namespace OnlineShop.WebAPI.Models
 
         public string Tags { set; get; }
 
+        public int Quantity { set; get; }
+
         public DateTime? CreatedDate { set; get; }
 
         public string CreatedBy { set; get; }

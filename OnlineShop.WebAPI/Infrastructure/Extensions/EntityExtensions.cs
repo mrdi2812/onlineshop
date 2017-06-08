@@ -83,6 +83,7 @@ namespace OnlineShop.WebAPI.Infrastructure.Extensions
             product.HotFlag = productVm.HotFlag;
             product.HomeFlag = productVm.HomeFlag;
             product.ViewCount = productVm.ViewCount;
+            product.Quantity = productVm.Quantity;
 
             product.CreatedDate = productVm.CreatedDate;
             product.CreatedBy = productVm.CreatedBy;
