@@ -84,6 +84,14 @@
             <h6>@Model.Quantity sản phẩm trong kho</h6>
             <p>@Model.Description</p>
             <div class="share">
+                <h5>Từ khóa liên quan :</h5>
+                <ul class="share_nav">
+                    @foreach (var tag in (IEnumerable<OnlineShop.WebAPI.Models.TagViewModel>)ViewBag.Tags)
+                    {
+                        <li><a href="/tag/@(tag.ID).html">@tag.Name</a></li>
+                    }                  
+                </ul>
+                <div class="clearfix"></div>
                 <h5>Chia sẻ :</h5>
                 <ul class="share_nav">
                     <li><a href="#"><img src="~/Assets/client/images/facebook.png" title="facebook"></a></li>
