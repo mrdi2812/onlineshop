@@ -22,6 +22,7 @@
            //CreateProductCategoryExample(context);
             CreateSlide(context);
             CreatePages(context);
+            CreateContactDetail(context);
 
 
         }
@@ -93,6 +94,27 @@
                     Status = true
                 };
                 context.Pages.Add(page);
+                context.SaveChanges();
+            }
+        }
+        private void CreateContactDetail(OnlineShopDbContext context)
+        {
+            if (context.ContactDetails.Count() == 0)
+            {
+                var contactDetail = new OnlineShop.Model.Models.ContactDetail()
+                {
+                   Name ="Shop thời trang Online",
+                   Phone="+84988135411",
+                   Email="anhtuan.ltv.cntt@gmail.com",
+                   Website="onlineshop.com",
+                   Adderss= "10 Nguyễn Xiển, Thanh Xuân Nam, Hà Nội, Việt Nam",
+                   Lat= 20.990603,
+                   Lng= 105.802888,
+                   Other ="Công ty chuyên cung cấp dịch vụ website chuyên nghiệp",
+                   Status=true
+
+                };
+                context.ContactDetails.Add(contactDetail);
                 context.SaveChanges();
             }
         }

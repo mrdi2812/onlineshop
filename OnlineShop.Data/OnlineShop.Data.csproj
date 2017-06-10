@@ -96,9 +96,14 @@
     <Compile Include="Migrations\201706080316530_addkeyproducttag.Designer.cs">
       <DependentUpon>201706080316530_addkeyproducttag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706081710506_ContactDetail.cs" />
+    <Compile Include="Migrations\201706081710506_ContactDetail.Designer.cs">
+      <DependentUpon>201706081710506_ContactDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OnlineShopDbContext.cs" />
+    <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
@@ -156,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706080316530_addkeyproducttag.resx">
       <DependentUpon>201706080316530_addkeyproducttag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706081710506_ContactDetail.resx">
+      <DependentUpon>201706081710506_ContactDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
