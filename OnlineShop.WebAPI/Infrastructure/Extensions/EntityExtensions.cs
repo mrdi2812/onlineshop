@@ -1,5 +1,6 @@
 ﻿using OnlineShop.Model.Models;
 using OnlineShop.WebAPI.Models;
+using System;
 
 namespace OnlineShop.WebAPI.Infrastructure.Extensions
 {
@@ -93,6 +94,14 @@ namespace OnlineShop.WebAPI.Infrastructure.Extensions
             product.MetaDescription = productVm.MetaDescription;
             product.Status = productVm.Status;
         }
-       
+        public static void UpdateFeedback(this Feedback feedback,FeedbackViewModel feedbackVm)
+        {
+            feedback.ID = feedbackVm.ID;
+            feedback.Name = feedbackVm.Name;
+            feedback.Email = feedbackVm.Email;
+            feedback.Message = feedbackVm.Message;
+            feedback.CreateDate = DateTime.Now;
+            feedback.Status = feedbackVm.Status;
+        }
     }
 }
