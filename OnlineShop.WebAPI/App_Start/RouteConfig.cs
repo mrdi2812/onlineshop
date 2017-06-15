@@ -41,6 +41,32 @@ namespace OnlineShop.WebAPI
             );
 
             routes.MapRoute(
+               name: "Register",
+               url: "dang-ky.html",
+               defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
+               namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+               );
+
+            routes.MapRoute(
+              name: "Confirm",
+              url: "confirm.html",
+              defaults: new { controller = "Account", action = "Confirm", id = UrlParameter.Optional },
+              namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+              );
+            routes.MapRoute(
+            name: "SentEmailConfirm",
+            url: "sent-confirm-email.html",
+            defaults: new { controller = "Account", action = "SentEmailConfirm", id = UrlParameter.Optional },
+            namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+            );
+            routes.MapRoute(
+             name: "ConfirmEmail",
+             url: "confirm-email.html",
+             defaults: new { controller = "Account", action = "ConfirmEmail", id = UrlParameter.Optional },
+             namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+             );
+
+            routes.MapRoute(
             name: "Product Category",
             url: "{alias}.pc-{id}.html",
             defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },

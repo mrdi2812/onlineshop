@@ -1,0 +1,38 @@
+﻿@model OnlineShop.WebAPI.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<div class="account_grid">
+    <div class="login-right">
+        <h3>ĐĂNG NHẬP TÀI KHOẢN</h3>
+        <p>Nếu bạn đã có tài khoản,vui lòng đăng nhập.</p>
+        @using (Html.BeginForm("Login", "Account",new { returnUrl = @ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary(false, "", new { @class = "error" });
+
+            <div>
+                <span>Tài khoản <label>*</label></span>
+                @Html.TextBoxFor(model => model.UserName)
+            </div>
+            <div>
+                <span>Mật khẩu<label>*</label></span>
+               @Html.PasswordFor(model =>model.Password)
+            </div>
+            <div>
+                @Html.CheckBoxFor(model => model.RememberMe) Nhớ mật khẩu ? 
+            </div>
+            
+            <input type="submit" value="Login">
+            <a class="forgot" href="#">Quên mật khẩu?</a>
+        }
+    </div>
+    <div class="login-left">
+        <h3>TẠO MỚI TÀI KHOẢN</h3>
+        <p>Nếu bạn chưa có tài khoản vui lòng đăng ký tại link dưới đây</p>
+        <a class="acount-btn" href="dang-ky.html">Đăng ký thành viên</a>
+    </div>
+    <div class="clearfix"> </div>
+</div>

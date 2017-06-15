@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "ConfirmEmail";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+<h2>ConfirmEmail</h2>
+
+<div class="register">
+    <div class="mation">
+        <div class="alert alert-success" role="alert">
+            <strong>Chúc mừng bạn !</strong> đã đăng ký thành công tài khoản @ViewBag.Email tại ONLINE SHOP.
+            <br />
+            Vui lòng click <a href=@Url.Action("Index","Home")> vào đây </a>để quay về trang chủ.
+        </div>
+    </div>
+</div>
