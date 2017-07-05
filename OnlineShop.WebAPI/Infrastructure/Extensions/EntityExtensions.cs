@@ -1,6 +1,7 @@
 ﻿using OnlineShop.Model.Models;
 using OnlineShop.WebAPI.Models;
 using System;
+using System.Collections;
 
 namespace OnlineShop.WebAPI.Infrastructure.Extensions
 {
@@ -103,5 +104,19 @@ namespace OnlineShop.WebAPI.Infrastructure.Extensions
             feedback.CreateDate = DateTime.Now;
             feedback.Status = feedbackVm.Status;
         }
+        public static void UpdateOrder(this Order order,OrderViewModel orderVm)
+        {
+            order.CustomerId = orderVm.CustomerId;
+            order.CustomerName = orderVm.CustomerName;
+            order.CustomerEmail = orderVm.CustomerEmail;
+            order.CustomerAddress = orderVm.CustomerAddress;
+            order.CustomerMobile = orderVm.CustomerMobile;
+            order.CustomerMessage = orderVm.CustomerMessage;
+            order.PaymentMethod = orderVm.PaymentMethod;
+            order.CreatedDate = DateTime.Now;
+            order.CreatedBy = orderVm.CreatedBy;
+            order.Status = orderVm.Status;
+                       
+         }
     }
 }

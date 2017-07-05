@@ -46,7 +46,18 @@ namespace OnlineShop.WebAPI
                defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
                namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
                );
-
+            routes.MapRoute(
+               name: "Cart",
+               url: "gio-hang.html",
+               defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional },
+               namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+               );
+            routes.MapRoute(
+               name: "CheckOut",
+               url: "thanh-toan.html",
+               defaults: new { controller = "ShoppingCart", action = "CheckOut", id = UrlParameter.Optional },
+               namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+               );
             routes.MapRoute(
               name: "Confirm",
               url: "confirm.html",
