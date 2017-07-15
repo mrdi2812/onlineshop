@@ -56,31 +56,50 @@ namespace OnlineShop.WebAPI.Controllers
             });
         }
 
-        public JsonResult CreateOrder(string orderVM)
+        public JsonResult CreateOrder(string orderViewModel)
         {
-            var order = new JavaScriptSerializer().Deserialize<OrderViewModel>(orderVM);
+            var order = new JavaScriptSerializer().Deserialize<OrderViewModel>(orderViewModel);
             var orderNew = new Order();
+
             orderNew.UpdateOrder(order);
+
             if (Request.IsAuthenticated)
             {
                 orderNew.CustomerId = User.Identity.GetUserId();
                 orderNew.CreatedBy = User.Identity.GetUserName();
             }
+
             var cart = (List<ShoppingCartViewModel>)Session[CommonConstants.SessionCart];
             List<OrderDetail> orderDetails = new List<OrderDetail>();
+            bool isEnough = true;
             foreach (var item in cart)
             {
                 var detail = new OrderDetail();
                 detail.ProductID = item.ProductId;
-                detail.Quantitty = item.Quantity;
+                detail.Quantity = item.Quantity;
+                detail.Price = item.Product.Price;
                 orderDetails.Add(detail);
-            }
 
-            _orderService.Add(orderNew, orderDetails);
-            return Json(new
+                isEnough = _productService.SellProduct(item.ProductId, item.Quantity);
+                break;
+            }
+            if (isEnough)
             {
-                status = true
-            });
+                _orderService.Add(orderNew, orderDetails);
+                _productService.Save();
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false,
+                    message = "Không đủ hàng."
+                });
+            }
         }
         public JsonResult GetAll()
         {
@@ -97,9 +116,18 @@ namespace OnlineShop.WebAPI.Controllers
         public JsonResult Add(int productId)
         {
             var cart = (List<ShoppingCartViewModel>)Session[CommonConstants.SessionCart];
+            var product = _productService.GetById(productId);
             if (cart == null)
             {
                 cart = new List<ShoppingCartViewModel>();
+            }
+            if (product.Quantity == 0)
+            {
+                return Json(new
+                {
+                    status = false,
+                    message = "Sản phẩm này hiện đang hết hàng"
+                });
             }
             if (cart.Any(x => x.ProductId == productId))
             {
@@ -113,13 +141,13 @@ namespace OnlineShop.WebAPI.Controllers
             }
             else
             {
-                ShoppingCartViewModel newitem = new ShoppingCartViewModel();
-                newitem.ProductId = productId;
-                var product = _productService.GetById(productId);
-                newitem.Product = Mapper.Map<Product, ProductViewModel>(product);
-                newitem.Quantity = 1;
-                cart.Add(newitem);
+                ShoppingCartViewModel newItem = new ShoppingCartViewModel();
+                newItem.ProductId = productId;
+                newItem.Product = Mapper.Map<Product, ProductViewModel>(product);
+                newItem.Quantity = 1;
+                cart.Add(newItem);
             }
+
             Session[CommonConstants.SessionCart] = cart;
             return Json(new
             {

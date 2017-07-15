@@ -1,4 +1,5 @@
-﻿using OnlineShop.Data.Infrastructure;
+﻿using OnlineShop.Common.ViewModels;
+using OnlineShop.Data.Infrastructure;
 using OnlineShop.Data.Repositories;
 using OnlineShop.Model.Models;
 using System;
@@ -11,7 +12,7 @@ namespace OnlineShop.Service
 {
     public interface IOrderService
     {
-        bool Add(Order order, List<OrderDetail> orderDetails);
+        bool Add(Order order, List<OrderDetail> orderDetails);    
     }
     public class OrderService :IOrderService
     {
@@ -36,7 +37,7 @@ namespace OnlineShop.Service
                     orderDetail.OrderID = order.ID;
                     _orderDetailRepository.Add(orderDetail);
                 }
-                _unitOfWork.Commit();
+                //_unitOfWork.Commit();
                 return true;
             }
             catch (Exception ex)
@@ -44,5 +45,7 @@ namespace OnlineShop.Service
                 throw;
             }
         }
+
+      
     }
 }

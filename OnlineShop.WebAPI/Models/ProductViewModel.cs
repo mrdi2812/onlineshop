@@ -37,6 +37,8 @@ namespace OnlineShop.WebAPI.Models
 
         public int Quantity { set; get; }
 
+        public decimal OriginalPrice { set; get; }
+
         public DateTime? CreatedDate { set; get; }
 
         public string CreatedBy { set; get; }

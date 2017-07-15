@@ -22,6 +22,9 @@ namespace OnlineShop.WebAPI.Mappings
                 cfg.CreateMap<Page, PageViewModel>();
                 cfg.CreateMap<ContactDetail,ContactDetailViewModel>();
                 cfg.CreateMap<Feedback, FeedbackViewModel>();
+                cfg.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
+                cfg.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
+                cfg.CreateMap<ApplicationUser, ApplicationUserViewModel>();
             });
         }
 

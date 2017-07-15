@@ -99,10 +99,10 @@
                 $scope.pagesCount = result.data.TotalPages;
                 $scope.totalCount = result.data.TotalCount;
             }, function () {
-                console.log('Load productcategory failed.');
+                console.log('Load product failed.');
             });
         }
- 
+
         $scope.getProducts();
     }
 })(angular.module('onlineshop.products'));

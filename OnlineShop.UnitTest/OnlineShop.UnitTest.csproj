@@ -72,6 +72,7 @@
     <Compile Include="RepositoryTest\PostCategoryRepositoryTest.cs" />
     <Compile Include="ServiceTest\ErrorServiceTest.cs" />
     <Compile Include="ServiceTest\PostCategoryServiceTest.cs" />
+    <Compile Include="ServiceTest\ProductServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineShop.Common\OnlineShop.Common.csproj">

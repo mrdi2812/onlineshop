@@ -65,6 +65,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Giá nhập</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name="originalPrice" required ng-model="product.OriginalPrice">
+                        <span ng-show="frmUpdateProduct.originalPrice.$invalid" class="has-error">Phải nhập giá</span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Giá</label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" name="price" required ng-model="product.Price">
@@ -75,6 +82,12 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">Giá KM</label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" name="promotionPrice" ng-model="product.PromotionPrice">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Số lượng</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name="quantity" ng-model="product.Quantity">
                     </div>
                 </div>
                 <div class="form-group">
@@ -142,7 +155,7 @@
                 </div>
             </div><!-- /.box-body -->
             <div class="box-footer">
-                <button ui-sref="product_categories" class="btn btn-default">Hủy</button>
+                <button ui-sref="products" class="btn btn-default">Hủy</button>
                 <button type="submit" ng-disabled="frmUpdateProduct.$invalid" class="btn btn-success pull-right">Lưu</button>
             </div><!-- /.box-footer -->
         </form>

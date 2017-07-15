@@ -4,7 +4,12 @@
     angular.module('onlineshop',
         ['onlineshop.products',
          'onlineshop.product_categories',
-         'onlineshop.common'])
+         'onlineshop.application_groups',
+         'onlineshop.application_roles',
+         'onlineshop.application_users',
+         'onlineshop.statistics',
+         'onlineshop.common'
+        ])
         .config(config)
         .config(configAuthentication);
 
