@@ -128,6 +128,22 @@
     <Compile Include="Migrations\201707141734522_RevenuesStatisticSP.Designer.cs">
       <DependentUpon>201707141734522_RevenuesStatisticSP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707191623432_AddColumTagtoPost.cs" />
+    <Compile Include="Migrations\201707191623432_AddColumTagtoPost.Designer.cs">
+      <DependentUpon>201707191623432_AddColumTagtoPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708091417515_AddTableComments.cs" />
+    <Compile Include="Migrations\201708091417515_AddTableComments.Designer.cs">
+      <DependentUpon>201708091417515_AddTableComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708100406535_AddSelectUserById.cs" />
+    <Compile Include="Migrations\201708100406535_AddSelectUserById.Designer.cs">
+      <DependentUpon>201708100406535_AddSelectUserById.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708151203194_DeleteRowCommentVote.cs" />
+    <Compile Include="Migrations\201708151203194_DeleteRowCommentVote.Designer.cs">
+      <DependentUpon>201708151203194_DeleteRowCommentVote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OnlineShopDbContext.cs" />
@@ -135,6 +151,8 @@
     <Compile Include="Repositories\ApplicationRoleGroupRepository.cs" />
     <Compile Include="Repositories\ApplicationRoleRepository.cs" />
     <Compile Include="Repositories\ApplicationUserGroupRepository.cs" />
+    <Compile Include="Repositories\CommentRepository.cs" />
+    <Compile Include="Repositories\CommentVoteRepository.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
@@ -218,6 +236,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707141734522_RevenuesStatisticSP.resx">
       <DependentUpon>201707141734522_RevenuesStatisticSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707191623432_AddColumTagtoPost.resx">
+      <DependentUpon>201707191623432_AddColumTagtoPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708091417515_AddTableComments.resx">
+      <DependentUpon>201708091417515_AddTableComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708100406535_AddSelectUserById.resx">
+      <DependentUpon>201708100406535_AddSelectUserById.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708151203194_DeleteRowCommentVote.resx">
+      <DependentUpon>201708151203194_DeleteRowCommentVote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

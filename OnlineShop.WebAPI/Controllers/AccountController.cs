@@ -1,9 +1,12 @@
-﻿using BotDetect.Web.Mvc;
+﻿using Autofac;
+using AutoMapper;
+using BotDetect.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineShop.Common;
 using OnlineShop.Model.Models;
+using OnlineShop.Service;
 using OnlineShop.Web.App_Start;
 using OnlineShop.WebAPI.Models;
 using System;
@@ -22,10 +25,14 @@ namespace OnlineShop.WebAPI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        private ICommentService _commentService;
+        IPostService _postService;
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ICommentService commentService, IPostService postService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _commentService = commentService;
+            _postService = postService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -195,6 +202,24 @@ namespace OnlineShop.WebAPI.Controllers
         {
             ViewBag.Email = Email;
             return View();
+        }
+
+        public JsonResult GetAllUser(int postId)
+        {
+            var users = _commentService.GetUserByPostId(postId);
+            var userVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<ApplicationUserViewModel>>(users);  
+            if(userVm!=null)
+            {   
+                return Json(new
+                {
+                    data = userVm,
+                    status = true
+                },JsonRequestBehavior.AllowGet);
+            }                         
+            return Json(new
+            {
+                status = false
+            },JsonRequestBehavior.AllowGet);
         }
     }
 }

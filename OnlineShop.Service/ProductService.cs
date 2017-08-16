@@ -45,6 +45,7 @@ namespace OnlineShop.Service
         Tag GetTag(string tagId);
 
         bool SellProduct(int productId, int quantity);
+       
     }
 
     public class ProductService : IProductService

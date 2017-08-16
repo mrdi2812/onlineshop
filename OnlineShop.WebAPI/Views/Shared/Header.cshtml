@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@model  IEnumerable<OnlineShop.WebAPI.Models.PostCategoryViewModel>
 <div class="header">
     <div class="top-header">
         <div class="container">
@@ -59,7 +60,6 @@
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
-    
                 @using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { @id = "frmLogout" }))
                 {
                     if (Request.IsAuthenticated)
@@ -80,10 +80,34 @@
                     }
                 }
 
-                <div class="cart"><a href="/gio-hang.html"><span> </span>GIỎ HÀNG</a></div>
+                <div class="cart"><a href="/gio-hang.html"><span> </span>GIỎ HÀNG</a></div>               
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="menu-header">
+        <div class="container">
+            <ul class="menu-top">
+                @foreach (var category in Model.Where(x => x.ParentID == null&& x.HomeFlag==true))
+                {
+                    var url = "/" + category.Alias +".b-"+category.ID+".html";
+                    var childCategories = Model.Where(x => x.ParentID == category.ID);
+                    <li>
+                        <a href="@url">@category.Name@(childCategories.Count() > 0 ? "<img class=\"arrow - img\"src=\"~/Assets/client/images/arrow1.png\"alt=\"\" />" : "") </a> | 
+                        @if (childCategories.Count() > 0)
+                        {
+                        <ul class="cute">
+                            @foreach (var childCategory in childCategories.Where(y=>y.HomeFlag==true))
+                            {
+                                var childCategoryurl = "/" + childCategory.Alias+ ".b-" + childCategory.ID+ ".html";
+                            <li class="subitem1"><a href="@childCategoryurl">@childCategory.Name</a></li>
+                            }                 
+                        </ul>
+                        }
+                    </li>
+                }
+            </ul>
         </div>
     </div>
 </div>

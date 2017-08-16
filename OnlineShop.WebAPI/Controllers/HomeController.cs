@@ -13,11 +13,13 @@ namespace OnlineShop.WebAPI.Controllers
     public class HomeController : Controller
     {
         IProductCategoryService _productCatgoryService;
+        IPostCategoryService _postCatgoryService;
         IComonService _commonService;
         IProductService _productService;
-        public HomeController(IProductCategoryService productCategoryService,IComonService commonService,IProductService productService)
+        public HomeController(IProductCategoryService productCategoryService,IComonService commonService,IProductService productService, IPostCategoryService postCategoryService)
         {
             this._productCatgoryService = productCategoryService;
+            this._postCatgoryService = postCategoryService;
             this._commonService = commonService;
             this._productService = productService;
         }
@@ -61,7 +63,9 @@ namespace OnlineShop.WebAPI.Controllers
         [ChildActionOnly]
         public ActionResult Header()
         {
-            return PartialView();
+            var model = _postCatgoryService.GetAll();
+            var listPostCategoryViewModel = Mapper.Map<IEnumerable<PostCategory>, IEnumerable<PostCategoryViewModel>>(model);
+            return PartialView(listPostCategoryViewModel);
         }
         [ChildActionOnly]
         [OutputCache(Duration =3600)]
@@ -71,5 +75,6 @@ namespace OnlineShop.WebAPI.Controllers
             var listProductCategoryViewModel = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
             return PartialView(listProductCategoryViewModel);
         }
+
     }
 }

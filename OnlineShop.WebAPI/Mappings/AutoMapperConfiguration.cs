@@ -12,7 +12,8 @@ namespace OnlineShop.WebAPI.Mappings
             {
                 cfg.CreateMap<Post, PostViewModel>();
                 cfg.CreateMap<PostCategory, PostCategoryViewModel>();
-                cfg.CreateMap<Tag, TagViewModel>();
+                cfg.CreateMap<PostTag, PostTagViewModel>();
+                cfg.CreateMap<Tag, TagViewModel>();              
 
                 cfg.CreateMap<ProductCategory, ProductCategoryViewModel>();
                 cfg.CreateMap<Product, ProductViewModel>();
@@ -25,6 +26,8 @@ namespace OnlineShop.WebAPI.Mappings
                 cfg.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
                 cfg.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
                 cfg.CreateMap<ApplicationUser, ApplicationUserViewModel>();
+                cfg.CreateMap<Comment, CommentViewModel>();
+                cfg.CreateMap<CommentVote, CommentVoteViewModel>();
             });
         }
 

@@ -39,8 +39,12 @@ namespace OnlineShop.WebAPI.Models
 
         public bool Status { set; get; }
 
+        public string Tags { set; get; }
+
         public virtual PostCategoryViewModel PostCategory { set; get; }
 
         public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
+
+        public virtual IEnumerable<CommentViewModel> Comments { set; get; }
     }
 }

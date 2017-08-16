@@ -4,6 +4,8 @@
     angular.module('onlineshop',
         ['onlineshop.products',
          'onlineshop.product_categories',
+         'onlineshop.posts',
+         'onlineshop.post_categories',
          'onlineshop.application_groups',
          'onlineshop.application_roles',
          'onlineshop.application_users',

@@ -1,0 +1,47 @@
+﻿@model OnlineShop.WebAPI.Models.PostViewModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    var postId = ViewBag.PostId;
+    var userId = ViewBag.UserId;
+    var userName = ViewBag.UserNameId;
+    var totalCount = ViewBag.TotalCount;
+}
+@section footerJS{
+
+<script src="~/Assets/client/js/plugins/moment/moment-with-locales.js"></script>
+<script src="~/Assets/admin/libs/jquery-textcomplete/dist/jquery.textcomplete.js"></script>
+@*<script src="~/Assets/admin/libs/jquery-comments/js/jquery-comments.min.js"></script>*@
+<script src="~/Assets/admin/libs/jquery-comments/js/jquery-comments.js"></script>
+<script src="~/Assets/client/js/controllers/comments.js"></script>
+    }
+
+<div class="single_top">
+    <input type="hidden" id="hidPostId" value="@postId">
+    <input type="hidden" id="hidCurrentUserId" value="@userId">
+    <input type="hidden" id="hidCurrentUserName" value="@userName">
+    <div class="news-main-detail">
+        <div class="text-detail">
+            <h1>@Model.Name</h1>
+        </div>
+        <div class="total-social">
+            <button type="button" class="btn btn-success"><i class="fa fa-comment"></i>Bình luận<small> @totalCount</small></button>
+            <button type="button" class="btn btn-success"><i class="fa fa-thumbs-up"></i>Thích<small> 0</small></button>
+            <button type="button" class="btn btn-success"><i class="fa fa-eye"></i>Lượt Xem<small> @Model.ViewCount</small></button>
+            <button type="button" class="btn btn-success"><i class="fa fa-comment"></i>Chia sẻ<small> 0</small></button>
+</div>
+        <div class="clearfix"></div>
+        <div class="text-content">             
+            <p></p>
+            @Html.Raw(Model.Content)
+        </div>
+        <br />
+        <div class="comments-wrap">
+            <h3>BÌNH LUẬN TIN TỨC</h3>
+        </div>
+        <div id="comments-container">
+           
+         </div>
+     </div>
+</div>
+

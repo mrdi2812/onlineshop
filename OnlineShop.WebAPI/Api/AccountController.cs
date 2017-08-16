@@ -5,6 +5,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using OnlineShop.Web.App_Start;
+using System.Web.Http.Results;
+using OnlineShop.Service;
+using AutoMapper;
+using System.Collections.Generic;
+using OnlineShop.WebAPI.Models;
+using OnlineShop.Model.Models;
 
 namespace OnlineShop.Web.Api
 {
@@ -13,15 +19,17 @@ namespace OnlineShop.Web.Api
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ICommentService _commentService;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ICommentService commentService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _commentService = commentService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -63,7 +71,6 @@ namespace OnlineShop.Web.Api
             var result = await SignInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout: false);
             return request.CreateResponse(HttpStatusCode.OK, result);
         }
-
-
+  
     }
 }

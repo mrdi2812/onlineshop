@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="ApplicationGroupService.cs" />
     <Compile Include="ApplicationRoleService.cs" />
+    <Compile Include="CommentService.cs" />
+    <Compile Include="CommentVoteService.cs" />
     <Compile Include="ContactDetailService.cs" />
     <Compile Include="ErrorService.cs" />
     <Compile Include="ComonService.cs" />

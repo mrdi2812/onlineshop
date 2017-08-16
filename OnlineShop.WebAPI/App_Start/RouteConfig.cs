@@ -85,12 +85,24 @@ namespace OnlineShop.WebAPI
             );
 
             routes.MapRoute(
+            name: "Post Category",
+            url: "{alias}.b-{id}.html",
+            defaults: new { controller = "Post", action = "Category", id = UrlParameter.Optional },
+            namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+            );
+
+            routes.MapRoute(
             name: "Product",
             url: "{alias}.p-{productId}.html",
             defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
             namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
             );
-
+            routes.MapRoute(
+            name: "Post",
+            url: "{alias}.pt-{postId}.html",
+            defaults: new { controller = "Post", action = "Detail", id = UrlParameter.Optional },
+            namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
+            );
             routes.MapRoute(
             name: "TagList",
             url: "tag/{tagId}.html",
@@ -104,6 +116,7 @@ namespace OnlineShop.WebAPI
             defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
             namespaces: new string[] { "OnlineShop.WebAPI.Controllers" }
             );
+            
         }
     }
 }

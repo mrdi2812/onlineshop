@@ -16,7 +16,7 @@ using OnlineShop.Common.Exceptions;
 
 namespace OnlineShop.WebAPI.Api
 {
-    [Authorize]
+
     [RoutePrefix("api/applicationUser")]
     public class ApplicationUserController : ApiControllerBase
     {
@@ -33,6 +33,19 @@ namespace OnlineShop.WebAPI.Api
             _appRoleService = appRoleService;
             _appGroupService = appGroupService;
             _userManager = userManager;
+        }
+        [Route("getall")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                var model = _userManager.Users;
+                IEnumerable<ApplicationUserViewModel> modelVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<ApplicationUserViewModel>>(model);
+                response = request.CreateResponse(HttpStatusCode.OK);
+                return response;
+            });
         }
         [Route("getlistpaging")]
         [HttpGet]

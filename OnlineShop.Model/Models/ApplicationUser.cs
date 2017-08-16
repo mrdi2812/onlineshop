@@ -19,6 +19,8 @@ namespace OnlineShop.Model.Models
 
         public DateTime? BirthDay { set; get; }
 
+        public string Avatar { set; get; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -28,5 +30,9 @@ namespace OnlineShop.Model.Models
         }
 
         public virtual IEnumerable<Order> Orders { set; get; }
+
+        public virtual IEnumerable<Comment> Comments { set; get; }
+
+        public virtual IEnumerable<CommentVote> CommentVotes { set; get; }
     }
 }

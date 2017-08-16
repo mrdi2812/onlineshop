@@ -64,6 +64,7 @@ namespace OnlineShop.WebAPI.Infrastructure.Extensions
             post.MetaKeyword = postVm.MetaKeyword;
             post.MetaDescription = postVm.MetaDescription;
             post.Status = postVm.Status;
+            post.Tags = postVm.Tags;
         }
         public static void UpdateProduct(this Product product, ProductViewModel productVm)
         {
@@ -140,5 +141,26 @@ namespace OnlineShop.WebAPI.Infrastructure.Extensions
             appUser.UserName = appUserViewModel.UserName;
             appUser.PhoneNumber = appUserViewModel.PhoneNumber;
         }
+        public static void UpdateComment(this Comment comment,CommentViewModel commentVm)
+        {
+            comment.AttachImage = commentVm.AttachImage;
+            comment.Content = commentVm.Content;
+            comment.CreateBy = commentVm.CreateBy;
+            comment.CreateDate = commentVm.CreateDate;
+            comment.ID = commentVm.ID;
+            comment.ModifiedDate = commentVm.ModifiedDate;
+            comment.ParentId = commentVm.ParentId;
+            comment.Pings = commentVm.Pings;
+            comment.PostId = commentVm.PostId;
+            comment.ReplyCount = commentVm.ReplyCount;
+            comment.Status = commentVm.Status;
+            comment.UserId = commentVm.UserId;
+
+        }
+        //public static void UpdateCommentVote(CommentVote cmVote, CommentVoteViewModel cmVoteVm)
+        //{
+        //    cmVote.UserId = cmVoteVm.UserId;
+        //    cmVote.CommentId = cmVoteVm.CommentId;
+        //}
     }
 }

@@ -14,9 +14,12 @@ namespace OnlineShop.WebAPI.Models
         public string Email { set; get; }
         public string Password { set; get; }
         public string UserName { set; get; }
-
         public string PhoneNumber { set; get; }
-
+        public string Avatar { set; get; }
         public IEnumerable<ApplicationGroupViewModel> Groups { set; get; }
+
+        public virtual IEnumerable<CommentViewModel> Comments { set; get; }
+
+        public virtual IEnumerable<CommentVoteViewModel> CommentVotes { set; get; }
     }
 }

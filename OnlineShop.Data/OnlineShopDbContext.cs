@@ -37,8 +37,9 @@ namespace OnlineShop.Data
         public DbSet<ApplicationGroup> ApplicationGroups { set; get; }
         public DbSet<ApplicationRole> ApplicationRoles { set; get; }
         public DbSet<ApplicationRoleGroup> ApplicationRoleGroups { set; get; }
-        public DbSet<ApplicationUserGroup> ApplicationUserGroups { set; get; }
-
+        public DbSet<ApplicationUserGroup> ApplicationUserGroups { set; get; }   
+        public DbSet<Comment> Comments { set; get;}
+        public DbSet<CommentVote> CommentVotes { set; get; }
         public static OnlineShopDbContext Create()
         {
             return new OnlineShopDbContext();

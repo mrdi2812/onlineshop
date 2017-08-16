@@ -2,6 +2,8 @@
 using OnlineShop.Data.Repositories;
 using System.Collections.Generic;
 using OnlineShop.Model.Models;
+using System;
+
 namespace OnlineShop.Service
 {
     public interface IPostCategoryService
@@ -13,6 +15,8 @@ namespace OnlineShop.Service
         PostCategory Delete(int id);
 
         IEnumerable<PostCategory> GetAll();
+
+        IEnumerable<PostCategory> GetAll(string keyword);
 
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
 
@@ -45,6 +49,14 @@ namespace OnlineShop.Service
         public IEnumerable<PostCategory> GetAll()
         {
             return _postCategoryRepository.GetAll();
+        }
+
+        public IEnumerable<PostCategory> GetAll(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+                return _postCategoryRepository.GetMulti(m => m.Name.Contains(keyword) || m.Description.Contains(keyword));
+            else
+                return _postCategoryRepository.GetAll();
         }
 
         public IEnumerable<PostCategory> GetAllByParentId(int parentId)
